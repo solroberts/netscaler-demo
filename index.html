@@ -85,12 +85,12 @@
           <button type="submit" class="btn">Submit</button>
         </fieldset>
       </form> --> 
-      <form method="GET" class="form-inline">
+      <form method="GET" action="cgi-bin/forms_handler.py" class="form-inline">
           <fieldset>
           <legend>Classic Policy Engine</legend>
           <label>Use the dropdown to test the different classic policy actions</label><br>
           <select id="test" name="classic_action">
-            <option value="none" data-icon="icon-search">choose your action</option>
+            <option value="none" data-icon="icon-search">classic action</option>
             <option value="drop_action" data-icon="icon-ok">Drop</option>
             <option value="reset_action" data-icon="icon-ok">Reset</option>
             <option value="error_action" data-icon="icon-ok">Error Code</option>
@@ -106,7 +106,7 @@
           <label>Use the following dropdowns to test the different actions for each feature set</label>
           <br>
           <select id="test" name="responder">
-            <option value="none" data-icon="icon-search">choose your responder action</option>
+            <option value="none" data-icon="icon-search">responder action</option>
             <option value="noop" data-icon="icon-ok">noop</option>
             <option value="reset" data-icon="icon-ok">reset</option>
             <option value="drop" data-icon="icon-ok">drop</option>
