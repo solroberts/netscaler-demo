@@ -1,5 +1,5 @@
 #!/usr/bin/env python
- 
+# use this if hosting on a linux box, very simple http server 
 import BaseHTTPServer
 import CGIHTTPServer
 import cgitb; cgitb.enable()  ## This line enables CGI error reporting

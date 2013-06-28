@@ -1,25 +1,14 @@
 #!/usr/bin/env python
 import os
 import cgi
-import time
-import timeit
-from src import pxsint
-import subprocess
-from multiprocessing import Process, Lock
 
 #first, we grab our variables
 form = cgi.FieldStorage()
-network_ip = form.getvalue('network_ip', 'empty')
-machine_start = form.getvalue('machine_start', 'empty')
-machine_end = form.getvalue('machine_end', 'empty')
-script_id = form.getvalue('script_id', 'empty')
-password = form.getvalue('password', 'empty')
+policy = form.getvalue('policy', 'empty')
+action = form.getvalue('action', 'empty')
 # then, we avoid script injection escaping the user input
-network_ip = cgi.escape(network_ip)
-machine_start = cgi.escape(machine_start)
-machine_end = cgi.escape(machine_end)
-script_id = cgi.escape(script_id)
-password = cgi.escape(password)
+policy = cgi.escape(policy)
+action = cgi.escape(action)
 #next, we add our html wrapper (better way to do this?)
 #skip to around line 100 for actual code to run
 print """\
@@ -57,9 +46,7 @@ print """\
                                    <link rel="shortcut icon" href="../assets/ico/favicon.png">
        </script>
   </head>
-
   <body>
-
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
@@ -71,8 +58,6 @@ print """\
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li><a href="../index.html">Home</a></li>
-              <li class="active"><a href="../../pages.html">Scripts</a></li>
-              <li><a href="../pages/labsnap.html">Lab Snapshots</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -82,49 +67,9 @@ print """\
     <div class="container">
     <fieldset>
           <legend>Legend for boxes below</legend>
-      <p>The submited network ip, machine start, machine end, and script were "%s, %s and %s"</p>
- """ % (machine_start, machine_end, script_id)
-#legacy stuff below:
-#
-
-print """
-scripts_dir = "/home/storage/scripts/attac-scripts/"
-refresh_nfs = "%srefresh_nfs.sh"
-cleanup_blades = "%scleanup_blades.sh" %(scripts_dir)
-cleanup_netapp = "%scleanup_netapp.sh" %(scripts_dir)
-desktop_cleanup = "%sdesktop_cleanup.sh" %(scripts_dir)
-print cleanup_blades
-print scripts_dir
-print desktop_cleanup
-username = "root"
-password = password
-command = script_id
-base_ip = "6.7.42."
-machine_start_int = int(machine_start)
-machine_end_int = int(machine_end)
-myrange = ([machine_start_int, machine_end_int])
-start = timeit.default_timer()
-for num in range(myrange[0], (myrange[1] +1)):
-      if num.len() < 2
-      hostname = "%s%s" %(base_ip, num) 
-      pxsint.pxssh_mod(hostname, username, password, command)
-stop = timeit.default_timer()
-time = stop - start
-"""
-print """\
-  <br>
-  <br>"""
-print "<h4>elapsed time: %s seconds</h4>" %(time)
-
-print "<h2>all scripts have run</h2>"
-
-#python to bash scripts
-
-#subprocess.check_call(["../scripts/blade_run.sh", "-f %s -l %s -s %s"]) %(machine_start, machine_end, script_id)
-
-#os.system("../scripts/blade_run.sh -f %s -l %s -s %s" %(machine_start,machine_end,script_id))
-
-
+      <p>The submited policy type and action were "%s and %s"</p>
+ """ % (policy, action)
+ 
 print"""     
     </fieldset>
     </div> <!-- container -->

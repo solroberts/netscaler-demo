@@ -47,9 +47,6 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="../index.html">Home</a></li>
-              <li><a href="../pages/scripts.html">Scripts</a></li>
-              <li><a href="../pages/labsnap.html">Lab Snapshots</a></li>
-              <!-- unused atm <li><a href="#contact">Contact</a></li> -->
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -58,33 +55,8 @@
     <div class="container">
       <div class="hero-unit">
       <h2>Welcome to the NetScaler policy demo page</h2>
-      <p>You can use the sections below to demo different policy functions</p>
+      <p>You can use the sections below to demo different policy functions. The purpose of this webapp is to assist NetScaler instructors and students in primarily the CNS-205 3i course, although more will be added soon.</p>
     </div> <!-- hero unit -->
-      <!-- CLOSE TAG ON 96 <form method="GET" action="cgi-bin/volume_destroy.sh" class="form-inline">
-        <fieldset>
-        <legend> area for destroying volumes below</legend>
-        <label>Enter beginning volume #, end volume #</label><br> 
-        <input type="text" name="vol_start" class="input-medium" placeholder="begin #">
-        <input type="text" name="vol_end" class="input-medium" placeholder="end #"> 
-        <button type="submit" class="btn">Submit</button>
-        </fieldset>
-      </form>
-      <form method="GET" action="cgi-bin/bash_cgi.sh" class="form-inline">
-          <fieldset>
-          <legend> area for creating volumes below</legend>
-          <label>Enter beginning volume #, end # here, and select script</label><br>
-          <input type="text" name="vol_start" class="input-medium" placeholder="begin #">
-          <input type="text" name="vol_end" class="input-medium" placeholder="end #">
-          <select id="test" name="script_id">
-            <option value="none" data-icon="icon-search">choose your script</option>
-            <option disabled="disabled" value="cxd_202" data-icon="icon-ok">CXD-202</option>
-            <option disabled="disabled" value="cns_205" data-icon="icon-ok">CNS-205</option>
-            <option value="cxa_206" data-icon="icon-ok">CXA-206</option>
-            <option value="cxa_301" data-icon="icon-ok">CXA-301</option>
-          </select>
-          <button type="submit" class="btn">Submit</button>
-        </fieldset>
-      </form> --> 
       <form method="GET" action="cgi-bin/forms_handler.py" class="form-inline">
           <fieldset>
           <legend>Classic Policy Engine</legend>
@@ -100,12 +72,21 @@
         </fieldset>
            
       </form>
-      <form method="GET" class="form-inline">
+      <form method="GET" action="cgi-bin/forms_handler.py" class="form-inline">
           <fieldset>
           <legend>Default Policy Engine</legend>
           <label>Use the following dropdowns to test the different actions for each feature set</label>
           <br>
-          <select id="test" name="responder">
+          <select id="test" name="responder_undef">
+            <option value="none" data-icon="icon-search">responder undef action</option>
+            <option value="noop" data-icon="icon-ok">noop</option>
+            <option value="reset" data-icon="icon-ok">reset</option>
+            <option value="drop" data-icon="icon-ok">drop</option>
+          </select>
+          <button type="submit" class="btn" float="right">Submit</button>
+          <br>
+          <br>
+          <select id="test" name="responder_undef">
             <option value="none" data-icon="icon-search">responder action</option>
             <option value="noop" data-icon="icon-ok">noop</option>
             <option value="reset" data-icon="icon-ok">reset</option>
@@ -116,37 +97,16 @@
         </form>
         <br>
         <fieldset>
-        <form> 
+        <form method="GET" action="cgi-bin/forms_handler.py" class="form-inline"> 
           <select id="test" name="rewrite">
-            <option value="none" data-icon="icon-search">choose your script</option>
-            <option value="cleanup_blades" data-icon="icon-ok">Cleanup Blades</option>
-            <option value="cleanup_netapp" data-icon="icon-ok">Cleanup Netapp</option>
-            <option disabled="disabled" value="cxd_202" data-icon="icon-ok">CXD-202</option>
-            <option disabled="disabled" value="cns_205" data-icon="icon-ok">CNS-205</option>
-            <option value="cxa_206" data-icon="icon-ok">CXA-206</option>
-            <option disabled="disabled" value="cxa_301" data-icon="icon-ok">CXA-301</option>
-            <option value="uptime" data-icon="icon-ok">Uptime</option>
+            <option value="none" data-icon="icon-search">rewrite undef action</option>
+            <option value="cleanup_blades" data-icon="icon-ok">no rewrite</option>
+            <option value="cleanup_netapp" data-icon="icon-ok">reset</option>
+            <option value="cleanup_netapp" data-icon="icon-ok">drop</option>
           </select>
           <button type="submit" class="btn" float="right">Submit</button>
           </form>
         </fieldset>
-          <br>
-        <fieldset>
-          <form>
-            <select id="test" name="url_rewrite">
-              <option value="none" data-icon="icon-search">choose your script</option>
-              <option value="cleanup_blades" data-icon="icon-ok">Cleanup Blades</option>
-              <option value="cleanup_netapp" data-icon="icon-ok">Cleanup Netapp</option>
-              <option disabled="disabled" value="cxd_202" data-icon="icon-ok">CXD-202</option>
-              <option disabled="disabled" value="cns_205" data-icon="icon-ok">CNS-205</option>
-              <option value="cxa_206" data-icon="icon-ok">CXA-206</option>
-              <option disabled="disabled" value="cxa_301" data-icon="icon-ok">CXA-301</option>
-              <option value="uptime" data-icon="icon-ok">Uptime</option>
-            </select>
-          <button type="submit" class="btn" float="right">Submit</button>
-        </fieldset>
-      </form>
-      
     </div> <!-- /container -->
     <div class="container">
       
